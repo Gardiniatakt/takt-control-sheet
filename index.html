@@ -264,7 +264,16 @@
         const editTaktBubble = document.getElementById('editTaktBubble');
 
         let tableData = JSON.parse(localStorage.getItem('taktTableData')) || {};
-        let entryLog = JSON.parse(localStorage.getItem('entryLog')) || {};
+        let entryLog = [];
+try {
+    const storedLog = localStorage.getItem('entryLog');
+    if (storedLog) {
+        entryLog = JSON.parse(storedLog) || [];
+    }
+} catch (e) {
+    console.error('Failed to parse entryLog from localStorage:', e);
+    entryLog = [];
+}
 
         let defaultData = [
             ["", "Block work", "Marking", "Cutting & Chasing", "Plaster Preparartion (Other than builders work)", "MEP 1st FIX", "Plaster Preparartion (for builders work)", "Plaster", "1st Fix for screed", "Preparation for screed", "Screed", "MEP 2nd fix", "Fire Sealent", "Paint Primer", "Stucco1 &2", "MEP Clearence for the grid", "Grid Installation", "MEP Droppers", "Board closure clearence", "Board Closing", "Board marking & Cutting", "Access Panel Installation", "Taping And Jointing", "Ceiling Primer", "Ceiling Stucco1 & 2", "Floor tile", "Tile Grouting", "Skirting", "Threshold", "1st coat Paint", "Wardrobe (Carcass, shutter & Ironmongery)", "Door Frames, Shutter & Ironmongery", "MEP Final fix"],
