@@ -533,7 +533,8 @@ try {
                                 tableData[finishKey] = { timestamp: timestamp };
                                 entry.ActualFinish = timestamp;
                             }
-
+                            console.log('entryLog type:', Object.prototype.toString.call(entryLog));
+                            console.log('entryLog content:', entryLog);
                             entryLog.push(entry);
 
                             // Save to localStorage
